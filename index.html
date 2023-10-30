@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Notes app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <script href="index.js"></script>
+</head>
+
+<body>
+    <form id="form" name="valform" action="" method="POST">
+        <fieldset>
+            <legend>Manage tasks</legend>
+            <div>
+                <label for="name">Name</label>
+                <input id="name" value="" />
+
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input id="description" value="" />
+
+            </div>
+        </fieldset>
+        <button type="submit" name="submit">Submit</button>
+    </form>
+
+    <ul id="list">
+        <li>Hey</li>
+    </ul>
+
+    <script defer>
+        document.querySelector("form").addEventListener('submit', e => {
+            e.preventDefault();
+            console.log(e.target)
+            const data = new FormData(e.target);
+            console.log([...data.entries()]);
+            let name = document.getElementById("name").value
+            let description = document.getElementById("description").value
+            console.log(name, description)
+            localStorage.setItem("name", name)
+            localStorage.setItem("description", description)
+            console.log(localStorage.getItem("name"))
+            let li = document.createElement('li')
+            document.querySelector('#list').appendChild(li)
+            var text = document.createTextNode(name);
+            li.appendChild(text);
+            /* var elements = document.getElementById("form").elements;
+            console.log(elements) */
+            /* var formData = new FormData(e);
+            // output as an object
+            for (const [name, value] of formData) {
+                console.log(name, ":", value)
+            } */
+            // console.log(Object.fromEntries(formData));
+            // console.log(e.target.value)
+        })
+    </script>
+</body>
+
+</html>
