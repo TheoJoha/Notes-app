@@ -28,7 +28,9 @@
     </form>
 
     <ul id="list">
-        <li>Hey</li>
+        <li>
+            Hey
+        </li>
     </ul>
 
     <script defer>
@@ -46,6 +48,8 @@
             let li = document.createElement('li')
             document.querySelector('#list').appendChild(li)
             var text = document.createTextNode(name);
+            li.appendChild(text);
+            var text = document.createTextNode(description);
             li.appendChild(text);
             /* var elements = document.getElementById("form").elements;
             console.log(elements) */
